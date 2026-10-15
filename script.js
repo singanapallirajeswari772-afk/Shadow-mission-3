@@ -315,9 +315,7 @@ function nextMission() {
 
   showScreen("homeScreen");
   updateHome();
-  if (completedMissions.length === missions.length) {
-    window.alert("All missions cleared! You are a Shadow Mission master.");
-  }
+  
 }
 
 function goHome() {
