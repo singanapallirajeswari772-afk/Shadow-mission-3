@@ -305,17 +305,26 @@ function showHint() {
 
 function nextMission() {
   const next = missions.find(function (mission) {
-    return !completedMissions.includes(mission.id) && isUnlocked(mission.id);
+    return !completedMissions.includes(mission.id)
+      && isUnlocked(mission.id);
   });
 
   if (next) {
     openMission(next.id);
-    return;
+  } else {
+    showResults();
   }
+}
 
-  showScreen("homeScreen");
-  updateHome();
-  
+function showResults() {
+  $("resultScore").textContent = totalScore + " XP";
+  $("resultCompleted").textContent =
+    completedMissions.length + " / " + missions.length;
+
+  $("resultMessage").textContent =
+    "All missions cleared! You are a Shadow Mission master.";
+
+  showScreen("resultsScreen");
 }
 
 function goHome() {
