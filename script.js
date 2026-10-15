@@ -350,6 +350,18 @@ function setupGame() {
 
   const homeButton = $("homeButton");
   if (homeButton) homeButton.addEventListener("click", goHome);
+  const resultsHomeButton = $("resultsHomeButton");
+if (resultsHomeButton) {
+  resultsHomeButton.addEventListener("click", goHome);
+}
+
+const playAgainButton = $("playAgainButton");
+if (playAgainButton) {
+  playAgainButton.addEventListener("click", function () {
+    showScreen("homeScreen");
+    updateHome();
+  });
+}
 
   const brandHome = $("brandHome");
   if (brandHome) {
