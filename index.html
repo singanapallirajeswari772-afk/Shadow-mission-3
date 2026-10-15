@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090611">
+  <title>SHADOW MISSION | Offline Mystery Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Shadow Mission home" id="brandHome">
+      <span class="brand-mark">SM</span>
+      <span>SHADOW<span class="brand-accent">MISSION</span></span>
+    </a>
+    <span class="offline-badge"><span class="status-dot"></span> OFFLINE MODE</span>
+  </header>
+
+  <main>
+    <section id="homeScreen" class="screen home-screen">
+      <div class="hero">
+        <p class="eyebrow">YOUR NEXT MISSION AWAITS</p>
+        <h1>Think in the<br><span>Shadows.</span></h1>
+        <p class="hero-copy">Crack secret codes, discover hidden clues, and solve mysterious puzzles. Your mission starts here, Agent.</p>
+        <button type="button" id="startButton" class="button button-primary">
+          START MISSION <span aria-hidden="true">↗</span>
+        </button>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-icon">✦</span>
+          <strong id="totalScore">0</strong>
+          <span class="stat-label">TOTAL POINTS</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon">◈</span>
+          <strong><span id="completedCount">0</span><small> / 3</small></strong>
+          <span class="stat-label">MISSIONS CLEARED</span>
+        </article>
+      </div>
+
+      <section class="missions-section" aria-labelledby="missionsHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MISSION DIRECTORY</p>
+            <h2 id="missionsHeading">Choose your challenge</h2>
+          </div>
+          <span class="directory-count">03 LEVELS</span>
+        </div>
+
+        <div class="mission-grid">
+          <button type="button" class="mission-card" data-mission="1">
+            <span class="mission-topline"><span>MISSION 01</span><span class="mission-symbol">⌘</span></span>
+            <span class="mission-card-title">Crack the Code</span>
+            <span class="mission-card-copy">Decode the number sequence.</span>
+            <span class="mission-status" id="missionStatus1">START</span>
+          </button>
+          <button type="button" class="mission-card" data-mission="2">
+            <span class="mission-topline"><span>MISSION 02</span><span class="mission-symbol">⌕</span></span>
+            <span class="mission-card-title">Find the Clue</span>
+            <span class="mission-card-copy">Discover the hidden word.</span>
+            <span class="mission-status" id="missionStatus2">LOCKED</span>
+          </button>
+          <button type="button" class="mission-card" data-mission="3">
+            <span class="mission-topline"><span>MISSION 03</span><span class="mission-symbol">▣</span></span>
+            <span class="mission-card-title">Escape Room</span>
+            <span class="mission-card-copy">Solve the final mystery.</span>
+            <span class="mission-status" id="missionStatus3">LOCKED</span>
+          </button>
+        </div>
+      </section>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden">
+      <button type="button" id="backButton" class="back-button">← BACK TO MISSIONS</button>
+      <div class="game-heading">
+        <p class="eyebrow" id="missionNumber">MISSION 01</p>
+        <h1 id="missionTitle">Crack the Code</h1>
+        <p id="missionDescription">Find the missing number.</p>
+      </div>
+
+      <article class="terminal">
+        <div class="terminal-bar">
+          <span class="terminal-lights"><i></i><i></i><i></i></span>
+          <span>MISSION_TERMINAL.exe</span>
+          <span class="terminal-live">● LIVE</span>
+        </div>
+        <div id="gameContent" class="terminal-content"></div>
+        <form id="answerForm" class="answer-form">
+          <label for="answerInput">YOUR ANSWER</label>
+          <div class="input-row">
+            <input id="answerInput" name="answer" type="text" autocomplete="off" placeholder="Enter answer..." required>
+            <button type="submit" class="button button-primary">SUBMIT ↗</button>
+          </div>
+        </form>
+      </article>
+
+      <div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div>
+      <div class="game-actions">
+        <button type="button" id="hintButton" class="button button-secondary">⌁ GET A HINT</button>
+      </div>
+    </section>
+
+    <section id="completeScreen" class="screen complete-screen hidden">
+      <div class="completion-card">
+        <div class="completion-symbol">✦</div>
+        <p class="eyebrow">MISSION STATUS: SUCCESS</p>
+        <h1>Mission <span>Cleared!</span></h1>
+        <p id="completionMessage" class="completion-message">Excellent work, Agent.</p>
+        <div class="reward-box">
+          <span>REWARD EARNED</span>
+          <strong id="rewardPoints">+100 XP</strong>
+        </div>
+        <div class="completion-actions">
+          <button type="button" id="nextButton" class="button button-primary">NEXT MISSION ↗</button>
+          <button type="button" id="homeButton" class="button button-secondary">HOME</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>SHADOW MISSION</span> <span>Think sharp. Stay curious.</span></footer>
+</body>
+</html>
