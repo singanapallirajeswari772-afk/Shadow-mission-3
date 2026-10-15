@@ -231,25 +231,23 @@ function openMission(missionId) {
   try { localStorage.setItem(STORAGE_LAST_QUESTIONS, JSON.stringify(lastQuestions)); } catch (error) {}
 
   currentMission = Object.assign({}, mission, puzzle);
-  answerLocked = completedMissions.includes(mission.id);
+  answerLocked = false;
 
   $("missionNumber").textContent = "MISSION " + String(mission.id).padStart(2, "0");
   $("missionTitle").textContent = mission.title;
   $("missionDescription").textContent = mission.description;
   $("gameContent").innerHTML = puzzle.question;
-  $("answerInput").value = "";
-  $("answerInput").disabled = answerLocked;
+$("answerInput").value = "";
+$("answerInput").disabled = false;
 
-  const submit = $("answerForm").querySelector('button[type="submit"]');
-  if (submit) submit.disabled = answerLocked;
+const submit = $("answerForm").querySelector('button[type="submit"]');
+if (submit) submit.disabled = false;
 
-  if (answerLocked) {
-    setFeedback("Mission already completed. You can revisit it, Agent.", "success");
-  } else {
-    const feedback = $("feedback");
-    feedback.textContent = "";
-    feedback.className = "feedback hidden";
-  }
+const feedback = $("feedback");
+if (feedback) {
+  feedback.textContent = "";
+  feedback.className = "feedback hidden";
+}
 
   showScreen("gameScreen");
 }
@@ -274,10 +272,14 @@ function checkAnswer(event) {
   }
 
   answerLocked = true;
+
+if (!completedMissions.includes(currentMission.id)) {
   completedMissions.push(currentMission.id);
   totalScore += currentMission.points;
-  saveProgress();
-  updateHome();
+}
+
+saveProgress();
+updateHome();
 
   answerInput.disabled = true;
   const submit = $("answerForm").querySelector('button[type="submit"]');
